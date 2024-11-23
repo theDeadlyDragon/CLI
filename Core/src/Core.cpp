@@ -3,6 +3,12 @@
 
 
 
-void test(){
-    std::cout << "lib"<< std::endl;
+
+void Test() {
+	TrieRoot<int> a;
+
+	a.AddElement("test", 10);
+	a.AddElement("test2", 11);
+
+	a.BuildTrie();
 }
