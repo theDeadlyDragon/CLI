@@ -1,7 +1,7 @@
 workspace "CLI"
     configurations { "Debug", "Release" }
     
-    require "cmake"
+    -- require "cmake"
 
     location "build"
 

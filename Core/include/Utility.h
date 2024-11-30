@@ -2,7 +2,7 @@
 #include "Trie.h"
 
 
-class TrieElement;
+//class TrieElement;
 
 
 

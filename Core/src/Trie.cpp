@@ -8,12 +8,14 @@ void AddElementToArray(TrieElement *elements, int &size, TrieElement element)
   
     if (size  == 0)
     {
-        memcpy(&elements[size++],&element,sizeof(TrieElement));
+        memcpy(&resizedList[0],&element,sizeof(TrieElement));
+        size++;
         elements = resizedList;
+
         return;
     }
 
-  size = size + 1;
+    size++;
     //
     memcpy(resizedList, elements, (size)*sizeof(TrieElement));
     memcpy(&resizedList[size-1],&element,sizeof(TrieElement));

@@ -2,7 +2,7 @@
 
 
 bool test2(char* args, int size){
-
+	return true;
 }
 
 
