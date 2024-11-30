@@ -1,14 +1,20 @@
 #include "../include/Core.h"
 
 
+bool test2(char* args, int size){
 
+}
 
 
 void Test() {
-	TrieRoot<int> a;
+	TrieRoot a;
 
-	a.AddElement("test", 10);
-	a.AddElement("test2", 11);
+	std::cout << "lib" << std::endl;
+
+	a.AddElement("test", &test2);
+	a.AddElement("test2", nullptr);
 
 	a.BuildTrie();
+
+	a.print();
 }

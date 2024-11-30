@@ -1,0 +1,21 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "gmake",
+        "type": "shell",
+        "command": "gmake",
+        "args": [],
+        "options": {
+          "cwd": "${workspaceFolder}/build" // Change to the 'build' directory
+        },
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "problemMatcher": ["$gcc"],
+        "detail": "Task to build the project using GNU Make from the build directory"
+      }
+    ]
+  }
+  

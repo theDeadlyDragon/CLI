@@ -1,62 +1,55 @@
 #pragma once
 #include <vector>
 #include <string>
-#include "../build/Utility.h"
+#include "iostream"
+#include "Utility.h"
 
+struct PreTrieElement;
+class TrieElement;
+class TrieRoot;
 
-template <typename T>
-struct PreTrieElement {
-	std::string m_name;
-	T m_data;
+void  AddElementToArray(TrieElement* elements, int& size, TrieElement element);
 
-	PreTrieElement(std::string name, T data){
-		this->m_name = name;
-		this->m_data = data;
-	}
-};
-
-template <typename T>
 class TrieElement {
 private:
 	char m_key;
-	TrieElement* m_childs = nullptr;
-	int m_childsSize = 0;
+	TrieElement* m_childs;
+	int m_childsSize;
 	TrieElement* m_parent;
-	T m_data;
+	bool (*m_func)(char*, int);
 	
 public:
 	TrieElement();
-	TrieElement(char key, TrieElement<T>* parent, T data): m_key(key), m_parent(parent), m_data(data){}
+	TrieElement(char key, TrieElement* parent, bool (*func)(char*, int) );
 
-	void addElement(PreTrieElement<T>* element) {
-		//AddElementToArray(m_childs, m_childsSize, new TrieElement<T>('1', this, 10));
-		AddElementToArray('a',m_childsSize,'a');
-
-	}
+	void print();
+	void addElement(PreTrieElement element);
 };
 
 
-template <typename T>
+
 class TrieRoot {
 private:
-	std::vector<PreTrieElement<T>> m_elementBBuild;
-	TrieElement<T> m_rootElement;
+	std::vector<PreTrieElement> m_prebuildElements;
+	TrieElement m_rootElement;
 
 public:
 	TrieRoot() {}
 
-	void BuildTrie() {
-		m_rootElement.addElement(nullptr);
-	}
-
-	void AddElement(std::string name, T data) {
-		this->m_elementBBuild.push_back(PreTrieElement<T>(name, data));
-	}
-
+	void AddElement(std::string name, bool (*func)(char*, int));
+	void BuildTrie();
+	void print();
 };
 
 
 
 
+struct PreTrieElement {
+	std::string name;
+	bool (*func)(char*, int);
+	int textIndex = 0;
+	PreTrieElement(std::string name, bool (*func)(char*, int)): name(name), func(func)
+	{}
+};
 
 
